@@ -21,6 +21,7 @@ public class AddCategoryActivity extends FragmentActivity implements AddCategory
   protected void onCreate(Bundle savedInstanceState){
     super.onCreate(savedInstanceState);
     setContentView(R.layout.new_category);
+
   }
 
   public void addCategory(View view) {
