@@ -15,7 +15,7 @@ on:
           - app:assembleFreeVersionDebug
           - app:assemblePaidVersionDebug
 
-  jobs:
+#  jobs:
 #  lint:
 #    runs-on: ubuntu-latest
 #    steps:
@@ -70,8 +70,9 @@ on:
 #          path: app/build/reports/androidTests/connected/
 #
 
-  package:
+#  package:
 #    needs: [instrumentation-test]
+   build:
     name: Generate apk
     runs-on : ubuntu-latest
     steps:
