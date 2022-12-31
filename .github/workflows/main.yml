@@ -10,7 +10,7 @@ on:
         options:
           - app:assembleFreeVersionDebug
           - app:assemblePaidVersionDebug
-
+jobs:
   build:
     name: Generate apk
     runs-on: ubuntu-latest
