@@ -15,7 +15,7 @@ on:
           - app:assembleFreeVersionDebug
           - app:assemblePaidVersionDebug
 
-  #jobs:
+  jobs:
 #  lint:
 #    runs-on: ubuntu-latest
 #    steps:
