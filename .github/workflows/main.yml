@@ -24,7 +24,9 @@ jobs:
           java-version: 11
 
       - name: Build debug APK
-        run: ./gradlew ${{ inputs.app_version }} --stacktrace
+        BUILD_CMD="./gradlew ${{ inputs.app_version }} --stacktrace"
+        run: echo $BUILD_CMD
+        run: $BUILD_CMD
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
