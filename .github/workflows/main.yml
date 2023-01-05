@@ -22,11 +22,14 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+          
+      - name: Print values   
+        run: |
+        echo "cmd_value=./gradlew ${{ inputs.app_version }} --stacktrace" >> GITHUB_ENV
+        echo "${{env.cmd_value}}"
 
       - name: Build debug APK
-        BUILD_CMD="./gradlew ${{ inputs.app_version }} --stacktrace"
-        run: echo $BUILD_CMD
-        run: $BUILD_CMD
+        run: ${{env.cmd_value}}
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
