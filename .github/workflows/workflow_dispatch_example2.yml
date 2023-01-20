@@ -1,5 +1,4 @@
 name: Fetch list and set as inputs
-
 on:
   workflow_dispatch:
     inputs:
