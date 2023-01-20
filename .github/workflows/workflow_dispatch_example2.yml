@@ -1,0 +1,26 @@
+name: Fetch list and set as inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      - name: option
+        description: "Select an option from the list"
+        required: true
+
+jobs:
+  fetch_list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Fetch list from script
+        id: fetch_list
+        run: sh ./fetch_list.sh
+        shell: bash
+
+      - name: Set input options
+        run: |
+          echo "::set-input name=option::$(cat ${{ steps.fetch_list.outputs.list }})"
+        shell: bash
+
