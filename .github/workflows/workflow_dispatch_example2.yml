@@ -2,7 +2,7 @@ name: Fetch list and set as inputs
 on:
   workflow_dispatch:
     inputs:
-      - name: option
+      option:
         description: "Select an option from the list"
         required: true
 
