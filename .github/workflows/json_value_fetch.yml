@@ -2,12 +2,9 @@ name: Fetch json value
 on:
   workflow_dispatch:
 
-    env:
-      FIREBASE_AUTH_KEY: ${{ secrets.FIREBASE_KEY }}
-
 jobs:
   build:
-    name: Generate apk
+    name: Fetch json value
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
@@ -19,6 +16,9 @@ jobs:
           node-version: '14'
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
+
+      - name: Set environment variable
+        run: echo "FIREBASE_AUTH_KEY=${{ secrets.FIREBASE_KEY }}" >> $GITHUB_ENV
 
       - name: Run javascript file
         run: node .github/workflows/abc.js
