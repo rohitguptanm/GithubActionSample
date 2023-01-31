@@ -1,0 +1,24 @@
+name: Fetch json value
+on:
+  workflow_dispatch:
+
+    env:
+      FIREBASE_AUTH_KEY: ${{ secrets.FIREBASE_KEY }}
+
+jobs:
+  build:
+    name: Generate apk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Set up node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Run javascript file
+        run: node .github/workflows/abc.js
