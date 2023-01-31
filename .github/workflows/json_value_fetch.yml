@@ -15,13 +15,8 @@ jobs:
         with:
           node-version: '14'
 
-#      - name: Set environment variable
-#        run: echo "FIREBASE_AUTH_KEY=${{ secrets.FIREBASE_KEY }}" >> $GITHUB_ENV
-
       - name: Set environment variable
-        run: |
-          echo ${{ secrets.FIREBASE_KEY }} > firebase-key.json
-          export GOOGLE_APPLICATION_CREDENTIALS=firebase-key.json
+        run: echo "FIREBASE_AUTH_KEY=${{ secrets.FIREBASE_KEY }}" >> $GITHUB_ENV
 
       - name: Run javascript file
         run: node .github/workflows/abc.js
