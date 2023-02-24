@@ -34,3 +34,9 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task printVersionName {
+    doLast {
+        println android.defaultConfig.versionName
+    }
+}

@@ -22,16 +22,29 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+
+      - name: Retrieve Version
+        run: |
+          echo "::set-output name=VERSION_NAME::$(${{github.workspace}}/gradlew -q printVersionName)"
+        id: android_version
+
+      - name: Get version
+        run: |
+          echo "version_name=${{steps.android_version.outputs.VERSION_NAME}}" >> $GITHUB_ENV
+
+      - name: print version
+        run: |
+          echo ${{env.version_name}}
           
-      - name: Print values   
-        run: echo "cmd_value=./gradlew ${{ inputs.app_version }} --stacktrace" >> $GITHUB_ENV
-        
-
-      - name: Build debug APK
-        run: ${{env.cmd_value}}
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
-        with:
-          name: APK file
-          path: app/build/outputs/apk
+#      - name: Print values
+#        run: echo "cmd_value=./gradlew ${{ inputs.app_version }} --stacktrace" >> $GITHUB_ENV
+#
+#
+#      - name: Build debug APK
+#        run: ${{env.cmd_value}}
+#
+#      - name: Upload APK
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: APK file
+#          path: app/build/outputs/apk
