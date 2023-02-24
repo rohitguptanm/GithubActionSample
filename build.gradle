@@ -37,6 +37,6 @@ task clean(type: Delete) {
 
 task printVersionName {
     doLast {
-        println android.defaultConfig.versionName
+        println "rohit"
     }
 }
