@@ -17,11 +17,16 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
-      - name: Print Subdirectory Names
+      - name: Find JKS File
         run: |
-          find . -type d -not -path '*/.git/*' | while read dir; do
-            echo "Subdirectory name: $dir"
-          done
+          JKS_FILE=$(find . -type f -name "*.jks")
+
+          if [ -n "$JKS_FILE" ]; then
+            echo "JKS file found: $JKS_FILE"
+          else
+            echo "JKS file not found."
+            exit 1
+          fi
 
       - name: Build release APK
         run: ./gradlew assembleFreeVersionRelease
