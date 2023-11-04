@@ -17,6 +17,12 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
+      - name: Print Subdirectory Names
+        run: |
+          for dir in */; do
+            echo "Subdirectory name: $dir"
+          done
+
       - name: Build release APK
         run: ./gradlew assembleFreeVersionRelease
 
