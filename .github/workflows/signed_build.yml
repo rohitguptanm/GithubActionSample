@@ -17,15 +17,15 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
-      - name: Find JKS File
+      - name: List Subdirectories in App Folder
         run: |
-          JKS_FILE=$(find . -type f -name "*.jks")
+          APP_SUBDIRECTORIES=$(find app -mindepth 1 -maxdepth 1 -type d)
 
-          if [ -n "$JKS_FILE" ]; then
-            echo "JKS file found: $JKS_FILE"
+          if [ -n "$APP_SUBDIRECTORIES" ]; then
+            echo "Subdirectories in 'app' folder:"
+            echo "$APP_SUBDIRECTORIES"
           else
-            echo "JKS file not found."
-            exit 1
+            echo "No subdirectories found in 'app' folder."
           fi
 
       - name: Build release APK
