@@ -19,7 +19,7 @@ jobs:
 
       - name: Print Subdirectory Names
         run: |
-          for dir in */; do
+          find . -type d -not -path '*/.git/*' | while read dir; do
             echo "Subdirectory name: $dir"
           done
 
