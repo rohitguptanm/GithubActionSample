@@ -17,34 +17,23 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
-      - name: List Subdirectories in App Folder
-        run: |
-          APP_SUBDIRECTORIES=$(find app -mindepth 1 -maxdepth 1 -type d)
-
-          if [ -n "$APP_SUBDIRECTORIES" ]; then
-            echo "Subdirectories in 'app' folder:"
-            echo "$APP_SUBDIRECTORIES"
-          else
-            echo "No subdirectories found in 'app' folder."
-          fi
-
       - name: Build release APK
         run: ./gradlew assembleFreeVersionRelease
 
-      - name: Sign APK
-        run: |
-          jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 \
-            -keystore app/rohit.jks \
-            -storepass rohit123 \
-            -keypass rohit123 \
-            app/build/outputs/apk/freeVersion/release/app-release-unsigned.apk \
-            rohit123
-
-      - name: Verify and align APK
-        run: |
-          zipalign -v 4 \
-            app/build/outputs/apk/freeVersion/release/app-release-unsigned.apk \
-            app/build/outputs/apk/freeVersion/release/app-release.apk
+#      - name: Sign APK
+#        run: |
+#          jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 \
+#            -keystore app/rohit.jks \
+#            -storepass rohit123 \
+#            -keypass rohit123 \
+#            app/build/outputs/apk/freeVersion/release/app-release-unsigned.apk \
+#            rohit123
+#
+#      - name: Verify and align APK
+#        run: |
+#          zipalign -v 4 \
+#            app/build/outputs/apk/freeVersion/release/app-release-unsigned.apk \
+#            app/build/outputs/apk/freeVersion/release/app-release.apk
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v2
