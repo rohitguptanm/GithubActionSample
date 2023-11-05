@@ -29,11 +29,11 @@ jobs:
             app/build/outputs/apk/freeVersion/release/app-freeVersion-release.apk \
             rohit123
 
-      - name: Verify and align APK
-        run: |
-          zipalign -v 4 \
-            app/build/outputs/apk/freeVersion/release/app-freeVersion-release.apk \
-            app/build/outputs/apk/freeVersion/release/app-freeVersion-release_new.apk
+#      - name: Verify and align APK
+#        run: |
+#          zipalign -v 4 \
+#            app/build/outputs/apk/freeVersion/release/app-freeVersion-release.apk \
+#            app/build/outputs/apk/freeVersion/release/app-freeVersion-release_new.apk
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v2
