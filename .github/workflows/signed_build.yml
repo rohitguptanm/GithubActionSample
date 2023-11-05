@@ -39,5 +39,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app-freeVersion-release
-          path: app\build\outputs\apk\freeVersion\release\app-freeVersion-release.apk
+          path: app\build\outputs\apk
 
